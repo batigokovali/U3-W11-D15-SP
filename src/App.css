@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+#main-content {
+  height: 88vh;
+  
+  background-color: rgb(18, 18, 18);
+}
+
+#left-navbar {
+  height: 88vh;
+  
+  background-color: black;
+}
+
+#bottom-navbar {
+  height: 12vh;
+  background-color: rgb(24, 24, 24);
+}
+
+.scroller {
+  height: 57vh;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple;
+  scrollbar-width: thin;
+}
+
+.player-image {
+  width: 70px;
+  height: 70px;
+}
+
+.player-navbar {
+  height: 100%;
+}
+
+#react-audio-player {
+  width: 40vw;
+}
