@@ -56,7 +56,7 @@ const BottomNavbar = () => {
                     controls
                 />
             </div>
-            <div id="navbar-bottom-right" className="text-white d-flex justify-content-end">
+            <div id="navbar-bottom-right" className="text-white d-flex align-items-end">
                 <p className="mb-0 mx-2"><BsViewList></BsViewList></p>
                 <p className="mb-0 mx-2"><BsDisplay></BsDisplay></p>
                 <p className="mb-0 mx-2"><BsArrowsFullscreen /></p>
