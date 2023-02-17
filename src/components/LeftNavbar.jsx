@@ -8,6 +8,7 @@ import { BsFillPlusSquareFill } from 'react-icons/bs'
 import { GiHeartOrgan } from 'react-icons/gi'
 import { FiTrash2 } from 'react-icons/fi'
 import { removeFromFavoritesAction } from '../redux/actions';
+import { CiBeerMugFull } from 'react-icons/ci'
 
 const LeftNavbar = () => {
     const favoriteSongsInReduxStore = useSelector((state) => state.favorites.content)
@@ -28,7 +29,10 @@ const LeftNavbar = () => {
     return (
         <>
             <div className="text-white d-flex flex-column align-items-start mx-2 left-navbar">
-                <p>...</p>
+                <div className="mb-3 mt-3 d-flex align-items-center" id="main-logo">
+                    <CiBeerMugFull></CiBeerMugFull>
+                    <p className="mb-0" id="upper-left-corner-text">Batoify</p>
+                </div>
                 <div className="mb-3 d-flex align-items-center">
                     <FiHome></FiHome>
                     <p className="mb-0" id="upper-left-corner-text">Home</p>

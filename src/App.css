@@ -39,7 +39,6 @@
 
 #main-content {
   height: 90vh;
-  
   background-color: rgb(18, 18, 18);
 }
 
@@ -152,4 +151,12 @@
 
 #liked-songs {
   margin-right: 10px;
+}
+
+#navbar-bottom-right {
+  width: 20vw;
+}
+
+#main-logo {
+  font-size: 36px;
 }
