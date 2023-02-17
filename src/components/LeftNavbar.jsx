@@ -6,6 +6,8 @@ import { FiHome } from 'react-icons/fi'
 import { VscLibrary } from 'react-icons/vsc'
 import { BsFillPlusSquareFill } from 'react-icons/bs'
 import { GiHeartOrgan } from 'react-icons/gi'
+import { FiTrash2 } from 'react-icons/fi'
+import { removeFromFavoritesAction } from '../redux/actions';
 
 const LeftNavbar = () => {
     const favoriteSongsInReduxStore = useSelector((state) => state.favorites.content)
@@ -48,7 +50,8 @@ const LeftNavbar = () => {
                 </div>
             </div>
             <div className="scroller text-white mx-2 d-flex flex-column align-items-start">
-                {favoriteSongsInReduxStore ? (favoriteSongsInReduxStore.map((songData) => (<p key={songData.id}>{songData.title_short}</p>))) : (<p>Add Some Songs!</p>)}
+                {favoriteSongsInReduxStore ? (favoriteSongsInReduxStore.map((songData) => (<><p className="text-start" id="liked-songs" key={songData.id}>{songData.title_short}
+                </p></>))) : (<p>Add Some Songs!</p>)}
             </div>
         </>
     )

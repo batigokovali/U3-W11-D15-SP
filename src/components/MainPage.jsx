@@ -7,7 +7,7 @@ const MainPage = () => {
     return (
         <Container fluid >
             <Row className="d-flex">
-                <Col lg={2} id="left-navbar">
+                <Col id="left-navbar">
                     <LeftNavbar></LeftNavbar>
                 </Col>
                 <Col id="main-content" >
