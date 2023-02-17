@@ -1,7 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from 'redux-persist'
 import { encryptTransform } from 'redux-persist-transform-encrypt'
-
+import localStorage from 'redux-persist/lib/storage'
+import SearchReducer from "../reducers/SearchReducer";
+import FavoritesReducer from "../reducers/FavoritesReducer";
+import SelectedSongReducer from "../reducers/SelectedSongReducer";
 
 const persistConfig = {
     storage: localStorage,
@@ -14,9 +17,9 @@ const persistConfig = {
 }
 
 const combinedReducer = combineReducers({
-
-
-
+    search: SearchReducer,
+    favorites: FavoritesReducer,
+    selected: SelectedSongReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer)

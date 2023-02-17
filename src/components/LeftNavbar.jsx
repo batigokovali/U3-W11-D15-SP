@@ -1,21 +1,54 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { useState } from "react";
+import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux'
+import { getSongsActionAsync } from "../redux/actions";
+import { FiHome } from 'react-icons/fi'
+import { VscLibrary } from 'react-icons/vsc'
+import { BsFillPlusSquareFill } from 'react-icons/bs'
+import { GiHeartOrgan } from 'react-icons/gi'
 
 const LeftNavbar = () => {
+    const favoriteSongsInReduxStore = useSelector((state) => state.favorites.content)
+    console.log(favoriteSongsInReduxStore)
+
+    const [query, setQuery] = useState("");
+    const dispatch = useDispatch()
+
+    const handleChange = (e) => {
+        setQuery(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        dispatch(getSongsActionAsync(query))
+    };
+
     return (
         <>
-            <div className="text-white d-flex flex-column align-items-start mx-2">
+            <div className="text-white d-flex flex-column align-items-start mx-2 left-navbar">
                 <p>...</p>
-                <p>Home</p>
-                <p>Search</p>
-                <p className="mb-5">Your Library</p>
-                <p>Create Playlist</p>
-                <p>Liked Songs</p>
-                <br id="left-navbar-br"></br>
+                <div className="mb-3 d-flex align-items-center">
+                    <FiHome></FiHome>
+                    <p className="mb-0" id="upper-left-corner-text">Home</p>
+                </div>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Control type="search" className="mb-3 bg-transparent text-white" value={query} onChange={handleChange} placeholder="Search" />
+                </Form>
+                <div className="mb-3 d-flex align-items-center w-100">
+                    <VscLibrary></VscLibrary>
+                    <p className="mb-0" id="upper-left-corner-text">Your Library</p>
+                </div>
+                <div className="mb-3 d-flex align-items-center w-100">
+                    <BsFillPlusSquareFill></BsFillPlusSquareFill>
+                    <p className="mb-0" id="upper-left-corner-text">Create Playlist</p>
+                </div>
+                <div className="mb-3 d-flex align-items-center w-100">
+                    <GiHeartOrgan></GiHeartOrgan>
+                    <p className="mb-0" id="upper-left-corner-text">Liked Songs</p>
+                </div>
             </div>
-            <div className="scroller text-white mx-2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident soluta at blanditiis atque possimus ipsam odit, enim assumenda dolores? Magni ratione consequatur nulla sit deleniti impedit, explicabo nemo. Dolores, consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, quam explicabo doloribus deserunt cupiditate architecto totam beatae mollitia accusamus. Dolore ipsum autem natus animi nihil incidunt officiis tempora sint officia.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi excepturi non vitae natus eaque delectus, odit consectetur atque adipisci assumenda labore! Eaque, sunt eum ea odio error tenetur alias nisi.
+            <div className="scroller text-white mx-2 d-flex flex-column align-items-start">
+                {favoriteSongsInReduxStore ? (favoriteSongsInReduxStore.map((songData) => (<p key={songData.id}>{songData.title_short}</p>))) : (<p>Add Some Songs!</p>)}
             </div>
         </>
     )
